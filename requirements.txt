@@ -1,1 +1,2 @@
-pre-commit
+pre-commit==2.17.0
+click==8.0.4
