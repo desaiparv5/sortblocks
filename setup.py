@@ -1,6 +1,7 @@
 from setuptools import setup
 
-setup(name='sortblocks',
+setup(
+      name='sortblocks',
       version='0.1',
       description='Sorts python blocks alphabetically',
       url='http://github.com/desaipav5/sortblocks',
@@ -8,4 +9,9 @@ setup(name='sortblocks',
       author_email='desaiparv5@gmail.com',
       license='GNU',
       packages=['sortblocks'],
-      zip_safe=False)
+      zip_safe=False,
+      entry_points='''
+        [console_scripts]
+        sortblocks=sortblocks.__init__:main
+      '''
+)

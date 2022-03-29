@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Union
 import ast as ast
+import click
 
 
 def sort_imports(cst_imports):
@@ -77,9 +78,18 @@ def sort_blocks(file: Union[str, Path]):
     return ast.unparse(sort_ast_root(parsed_file))
 
 
-def main():
-    f = Path('sample.py')
-    print(sort_blocks(f))
+@click.command()
+@click.argument('input', type=click.Path(exists=True), )
+@click.option('-o', '--output', type=click.Path())
+def main(input, output):
+
+    out_str = sort_blocks(input)
+
+    if output:
+        with open(output, 'w') as f:
+            f.write(out_str)
+    else:
+        print(out_str)
 
 
 if __name__ == "__main__":
